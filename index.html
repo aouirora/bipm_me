@@ -3,52 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurora's Story</title>
+    <title>Hi, my name is Aurora!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A bit softer font */
             line-height: 1.6;
-            color: #333;
+            color: #444; /* Slightly softer text color */
             max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 20px auto; /* More margin top/bottom */
+            padding: 20px 30px; /* More padding */
+            background-color: #fcfcfc; /* Very light background */
+            border-radius: 15px; /* Slightly rounded overall page */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
         }
         h1 {
-            border-bottom: 2px solid #ccc;
+            color: #6a5acd; /* A lovely lavender/periwinkle for the main title */
+            text-align: center;
+            border-bottom: 2px solid #e0cffc; /* Lighter, matching border */
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+        h2 {
+            color: #3498db; /* Keep a nice blue for main sections */
+            border-bottom: 1px dashed #c0e0f8; /* Dashed lighter blue border */
             padding-bottom: 5px;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            margin-top: 25px;
         }
         h3 {
-            color: #3498db;
-            margin-top: 30px;
-            border-bottom: 1px solid #eee;
+            color: #ff99aa; /* Soft pink for sub-sections */
+            margin-top: 35px;
+            border-bottom: 1px dotted #ffe0e6; /* Dotted lighter pink border */
             padding-bottom: 5px;
+            font-size: 1.4em;
         }
         h4 {
-            color: #e74c3c;
-            margin-bottom: 15px;
+            color: #6bb0ff; /* Light blue for minor headings */
+            margin-bottom: 12px;
+            font-size: 1.2em;
         }
         ul {
-            list-style: disc;
-            padding-left: 20px;
+            list-style: '✨ '; /* Cute emoji bullet points */
+            padding-left: 25px;
+        }
+        ul li {
+            margin-bottom: 8px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for table */
+            border-radius: 8px; /* Rounded table corners */
+            overflow: hidden; /* Ensures rounded corners apply to content */
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
+            border: 1px solid #f0f0f0; /* Lighter border for table cells */
+            padding: 12px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #e6f7ff; /* Very light blue for table headers */
             font-weight: bold;
+            color: #336699;
+        }
+        tr:nth-child(even) {
+            background-color: #fdfdfd; /* Subtle zebra striping */
+        }
+        a {
+            color: #ff6688; /* Cute pink for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #6a5acd; /* Periwinkle on hover */
+        }
+        hr {
+            border: none;
+            border-top: 1px dashed #e0e0e0; /* Dashed separator */
+            margin: 40px 0;
         }
         .current-position p {
             margin: 5px 0;
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Increased gap for images */
+            justify-content: center;
+            margin-top: 25px;
+            padding: 10px;
+            background-color: #fff9fb; /* Very light pink background for gallery */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .image-gallery img {
+            max-width: 280px; /* Slightly larger image containers */
+            height: auto;
+            border: 2px solid #ffccdd; /* Soft pink border for images */
+            border-radius: 8px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .image-gallery img:hover {
+            transform: scale(1.03); /* Slight zoom on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        iframe {
+            display: block; /* Ensures iframe is treated as a block for centering */
+            margin: 40px auto; /* Center the iframe */
+            border: 2px solid #ffccdd; /* Soft pink border for the map */
+            border-radius: 10px; /* Rounded corners for the map iframe */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -65,7 +133,7 @@
         <p>Iberdrola Deutschland GmbH</p>
         <p>
             <a href="https://www.linkedin.com/in/auroraruci/" target="_blank">LinkedIn Profile</a> |
-
+            <a href="https://aouirora.github.io/" target="_blank">Personal Website</a>
         </p>
     </div>
 
@@ -128,5 +196,14 @@
                 <td>2025–Now</td>
                 <td>Berlin, Germany</td>
                 <td>Master's in Business Intelligence & Process Managamenet</td>
+            </tr>
+        </tbody>
+    </table>
 
-<iframe src="academic_journey_map.html" width="800" height="600" style="border:1px solid #ddd;"></iframe>
+    <h4>📸 Academic Journey in Pictures</h4>
+    <p style="text-align: center; color: #777; font-style: italic;">A visual timeline of my key stops and experiences:</p>
+    
+    <div class="image-gallery">
+        <img src="https://via.placeholder.com/280x180/ADD8E6/FFFFFF?text=High+School" alt="High School Graduation">
+        <img src="https://via.placeholder.com/280x180/FFB6C1/FFFFFF?text=Exchange+in+Spain" alt="Alicante Exchange Semester">
+        <img src="
