@@ -1,209 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<title>Aurora's Story</title>
+
+<link rel="shortcut icon" href="{Favicon}" />
+<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
+<link href="https://dencar-icons.gitlab.io/i/icons.css" rel="stylesheet">
+<script>
+    const storedTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+    if (storedTheme)
+        document.documentElement.setAttribute("data-theme", storedTheme);
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi, my name is Aurora!</title>
-    <style>
+    <style type="text/css">
+        @import url(httpss://fonts.bunny.net/css?family=albert-sans:400,400i,700,700i|merriweather:400,400i,700,700i);
+
+        /*attention! to change the colors of the page, look below!*/
+        /*make changes here to change the colors on light mode. please leave LightOn and LightOff variables be!*/
+        :root,
+        html[data-theme="light"] {
+            --LightOn: flex;
+            --LightOff: none;
+            
+            /* MY COMMENT: Step 1 - I changed the main accent color from green to our soft purple! */
+            --accent: #8A63D2; /* Was #b1c491 */
+
+            --body: #1f1f1f;
+            --background: #fff;
+            --border: #eee;
+            --fontSize: 13px;
+        }
+
+        /*make changes here to change the colors on dark mode. please leave LightOn and LightOff variables be!*/
+        html[data-theme="dark"] {
+            --LightOn: none;
+            --LightOff: flex;
+            --body: #d3d4d4;
+            --border: #d3d4d4;
+            --background: #090909;
+        }
+
+        html.theme-transition,
+        html.theme-transition *,
+        html.theme-transition *:before,
+        html.theme-transition *:after {
+            transition: 0s !important;
+            transition-delay: 0 !important;
+        }
+
+        iframe.tmblr-iframe {
+            display: none;
+        }
+
+        #tumblr-controls {
+            position: fixed;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A bit softer font */
-            line-height: 1.6;
-            color: #444; /* Slightly softer text color */
-            max-width: 900px;
-            margin: 20px auto; /* More margin top/bottom */
-            padding: 20px 30px; /* More padding */
-            background-color: #fcfcfc; /* Very light background */
-            border-radius: 15px; /* Slightly rounded overall page */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+            margin: 0;
+            padding: 0;
+            font-family: 'Albert Sans';
+            font-size: var(--fontSize);
+            color: var(--body);
+            background: var(--background);
         }
-        h1 {
-            color: #6a5acd; /* A lovely lavender/periwinkle for the main title */
+
+        a {
+            text-decoration: none;
+            color: var(--body);
+        }
+
+        .dark-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 20px;
+            padding: 8px;
+            height: 20px;
+            font-size: 30px;
             text-align: center;
-            border-bottom: 2px solid #e0cffc; /* Lighter, matching border */
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            font-size: 2.8em;
+            color: var(--body);
+        }
+
+        .light-on {
+            display: var(--LightOn);
+        }
+
+        .light-off {
+            display: var(--LightOff);
+        }
+
+        .tippy-box {
+            font-family: 'Albert Sans';
+            font-size: calc(var(--fontSize) - 2px);
+            background: var(--background);
+            color: var(--body);
+            box-shadow: -2px -2px inset var(--accent);
+        }
+
+        /*sidebars*/
+        .sidebar {
+            width: 20%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background: var(--background);
+            justify-content: flex-start;
+        }
+
+        .left {
+            left: 0;
+            border-right: 1px solid var(--border);
+        }
+
+        .right {
+            right: 0;
+            border-left: 1px solid var(--border);
+        }
+
+        .sidebar-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .navigation-links {
+            width: 70%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navigation-links .dencar-icons {
+            font-size: 30px;
+        }
+
+        .navigation-links a {
             font-weight: 700;
+            text-transform: capitalize;
+            font-size: calc(var(--fontSize) + 3px);
         }
-        h2 {
-            color: #3498db; /* Keep a nice blue for main sections */
-            border-bottom: 1px dashed #c0e0f8; /* Dashed lighter blue border */
-            padding-bottom: 5px;
-            margin-top: 25px;
+
+        /*main container*/
+        #main-container {
+            width: 60%;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: var(--background);
         }
-        h3 {
-            color: #ff99aa; /* Soft pink for sub-sections */
-            margin-top: 35px;
-            border-bottom: 1px dotted #ffe0e6; /* Dotted lighter pink border */
-            padding-bottom: 5px;
-            font-size: 1.4em;
+
+        header {
+            width: 100%;
+            height: 250px;
         }
+
+        header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /**icon and description**/
+        #description {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        #description-icon {
+            width: 64px;
+            margin-top: -20px;
+            height: 64px;
+            border-radius: 100%;
+            padding: 8px;
+            background: var(--background);
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #description-icon img {
+            width: 64px;
+            height: 64px;
+            max-width: 64px;
+            max-height: 64px;
+            border-radius: 100%;
+        }
+
+        #title {
+            font-family: 'Merriweather';
+            font-weight: 700;
+            font-style: italic;
+            text-transform: lowercase;
+            box-shadow: 0 -5px inset var(--accent);
+            margin-bottom: 20px;
+            font-size: calc(var(--fontSize) + 5px);
+        }
+
+        #description-box {
+            text-align: justify;
+            width: 75%;
+            display: flex;
+            padding-top: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        #description-text {
+            padding-right: 20px;
+            padding-bottom: 20px;
+            /* MY COMMENT: Added this to make your list of positions look better */
+            width: 100%; 
+            text-align: left;
+        }
+
+        #description-text a {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* MY COMMENT: Added this style for your position links */
+        #description-text p {
+            margin: 5px 0;
+        }
+
+
+        #description-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .description-label {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 20px;
+            color: #c3c3c3;
+        }
+
+        .description-label .dencar-icons {
+            font-size: 18px;
+            color: var(--accent);
+            margin-right: 5px;
+        }
+
+        /**tabs styling**/
+        .tabs {
+            display: flex;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border) !important;
+            background: var(--background);
+        }
+
+        .tabs a {
+            border-bottom: none !important;
+        }
+
+        .tabs ul li a {
+            font-size: calc(var(--fontSize) + 2px) !important;
+        }
+
+        .tabs ul li a:hover {
+            color: var(--accent) !important;
+            border-bottom: 3px solid var(--accent) !important;
+        }
+
+        .tabs ul li.is-active a {
+            color: var(--accent) !important;
+            font-weight: 700;
+            border-bottom: 3px solid var(--accent) !important;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--background) !important;
+            width: 100%;
+        }
+
+        /**tab content styling**/
+        .tab-content.is-active {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /**about**/
+        /**general styling for content block**/
+
+        #about,
+        #blogroll,
+        #tags,
+        #faq {
+            width: 90%;
+        }
+
+        #about-content,
+        #blogroll-content,
+        #tags-content,
+        #faq-content {
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* MY COMMENT: The styles below were part of the theme's default "About" tab.
+        I've left them here, but we are replacing the content of that tab
+        with your own custom content.
+        */
+        #about-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--background);
+            border-radius: 100%;
+            border: 3px solid var(--accent);
+            padding: 5px;
+        }
+
+        #about-text {
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            padding-top: 20px;
+            margin-left: 30px;
+            margin-top: -20px;
+        }
+
+        #about-quote {
+            font-family: 'Merriweather';
+            font-size: calc(var(--fontSize) + 3px);
+            font-weight: 700;
+            font-style: italic;
+            text-transform: lowercase;
+            margin-left: 10px;
+        }
+
+        #about-info-panel {
+            display: flex;
+            width: 90%;
+            align-items: center;
+            margin-left: 15px;
+            justify-content: space-between;
+        }
+
+        .about-box {
+            width: 45%;
+        }
+
+        .about-box-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            width: 100%;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .about-box-row:last-of-item {
+            margin-bottom: 0 !important;
+        }
+
+        .about-box-row .dencar-icons {
+            color: var(--accent);
+            font-size: calc(var(--fontSize) + 3px);
+        }
+
+        #about-text-area {
+            margin-top: 20px;
+        }
+
+        #about-text-area p {
+            margin: 10px;
+        }
+
+        #about-text-area a {
+            color: var(--accent);
+        }
+
+        #about-text-area blockquote {
+            padding-left: 10px;
+            border-left: 2px solid var(--accent);
+            margin: 20px !important;
+        }
+
+        #about-text-area ul {
+            list-style: disc !important;
+            margin-left: 20px !important;
+            padding: 10px !important;
+        }
+        
+        /* MY COMMENT: Step 4 & 5 - I've pasted in our "cute" styles for H4 and Tables! */
+        /* This will style your new sections in the "About" tab. */
         h4 {
-            color: #6bb0ff; /* Light blue for minor headings */
-            margin-bottom: 12px;
-            font-size: 1.2em;
+            color: #F39C12; /* A warm, friendly orange */
+            margin-bottom: 15px;
+            margin-top: 20px; /* Added some space above the header */
+            background-color: #FFF3E0; /* A very light orange background */
+            padding: 5px 10px; /* Adds 5px of space on top/bottom, 10px on left/right */
+            border-radius: 5px; /* This is the key! It rounds the corners. */
+            display: inline-block; /* Makes the background fit the text, not stretch full-width */
+            font-size: 16px; /* Made it a little bigger */
         }
-        ul {
-            list-style: '✨ '; /* Cute emoji bullet points */
-            padding-left: 25px;
-        }
-        ul li {
-            margin-bottom: 8px;
-        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for table */
-            border-radius: 8px; /* Rounded table corners */
-            overflow: hidden; /* Ensures rounded corners apply to content */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Adds a soft, subtle shadow */
+            border-radius: 10px; /* Rounds the corners of the whole table */
+            overflow: hidden; /* Important! This makes the border-radius "clip" the sharp corners */
+            font-size: 13px; /* Match the body font size */
         }
+        
         th, td {
-            border: 1px solid #f0f0f0; /* Lighter border for table cells */
-            padding: 12px;
+            border: 1px solid #eee; /* Made the border lighter */
+            padding: 12px 15px; /* A bit more padding */
             text-align: left;
         }
+        
         th {
-            background-color: #e6f7ff; /* Very light blue for table headers */
-            font-weight: bold;
-            color: #336699;
-        }
-        tr:nth-child(even) {
-            background-color: #fdfdfd; /* Subtle zebra striping */
-        }
-        a {
-            color: #ff6688; /* Cute pink for links */
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #6a5acd; /* Periwinkle on hover */
-        }
-        hr {
-            border: none;
-            border-top: 1px dashed #e0e0e0; /* Dashed separator */
-            margin: 40px 0;
-        }
-        .current-position p {
-            margin: 5px 0;
-        }
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* Increased gap for images */
-            justify-content: center;
-            margin-top: 25px;
-            padding: 10px;
-            background-color: #fff9fb; /* Very light pink background for gallery */
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        .image-gallery img {
-            max-width: 280px; /* Slightly larger image containers */
-            height: auto;
-            border: 2px solid #ffccdd; /* Soft pink border for images */
-            border-radius: 8px;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .image-gallery img:hover {
-            transform: scale(1.03); /* Slight zoom on hover */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        iframe {
-            display: block; /* Ensures iframe is treated as a block for centering */
-            margin: 40px auto; /* Center the iframe */
-            border: 2px solid #ffccdd; /* Soft pink border for the map */
-            border-radius: 10px; /* Rounded corners for the map iframe */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Aurora's Story</h1>
-
-    <div class="current-position">
-        <h2>Current Position</h2>
-        <p><strong>Berlin, Germany</strong></p>
-        <p><strong>Master Student</strong> in Business Intelligence & Process Management</p>
-        <p>Berlin School of Economics and Law</p>
-        <p><strong>Working Student</strong> in Payroll & Controlling</p>
-        <p>Iberdrola Deutschland GmbH</p>
-        <p>
-            <a href="https://www.linkedin.com/in/auroraruci/" target="_blank">LinkedIn Profile</a> |
-            <a href="https://aouirora.github.io/" target="_blank">Personal Website</a>
-        </p>
-    </div>
-
-    <hr>
-
-    <h3>Born and Raised</h3>
-    <ul>
-        <li>Born in Noventa Vicentina (Italy)</li>
-        <li>Raised between Noventa and Durrës (Albania)</li>
-    </ul>
-
-    <hr>
-
-    <h3>What I like</h3>
-    <ul>
-        <li>Food!! 😋</li>
-        <li>Reading! (mostly epic fantasy with good world building) 📚</li>
-    </ul>
-
-    <hr>
-
-    <h3>Academic Journey</h3>
-
-    <h4>🎓 Stops Along the Way</h4>
-    <table>
-        <thead>
-            <tr>
-                <th>Period</th>
-                <th>Location</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2000</td>
-                <td>Noventa Vicentina, Italy</td>
-                <td>Born</td>
-            </tr>
-            <tr>
-                <td>2008-2014</td>
-                <td>Durrës, Albania</td>
-                <td>Middle School</td>
-            </tr>
-            <tr>
-                <td>2015-2020</td>
-                <td>Noventa Vicentina, Italy</td>
-                <td>High School</td>
-            </tr>
-            <tr>
-                <td>2021-2025</td>
-                <td>Berlin, Germany</td>
-                <td>Bachelor's Intl. Business Management</td>
-            </tr>
-            <tr>
-                <td>Jan - Jun 2024</td>
-                <td>Alicante, Spain</td>
-                <td>Exchange Semester</td>
-            </tr>
-            <tr>
-                <td>2025–Now</td>
-                <td>Berlin, Germany</td>
-                <td>Master's in Business Intelligence & Process Managamenet</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h4>📸 Academic Journey in Pictures</h4>
-    <p style="text-align: center; color: #777; font-style: italic;">A visual timeline of my key stops and experiences:</p>
-    
-    <div class="image-gallery">
-        <img src="https://via.placeholder.com/280x180/ADD8E6/FFFFFF?text=High+School" alt="High School Graduation">
-        <img src="https://via.placeholder.com/280x180/FFB6C1/FFFFFF?text=Exchange+in+Spain" alt="Alicante Exchange Semester">
-        <img src="
+            background-color: #F5EFFF; /* A very light purple */
+            font-weight
