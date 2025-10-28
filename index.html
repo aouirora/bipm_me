@@ -4,103 +4,142 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aurora's Story</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
   <style>
-    
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      color: #333;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #e7f0fd, #f6faff);
+      color: #2b3a55;
+      text-align: center;
+      line-height: 1.7;
       margin: 0;
       padding: 0;
     }
 
     .container {
       max-width: 850px;
-      background: white;
+      background: #ffffff;
       margin: 40px auto;
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 16px rgba(100, 149, 237, 0.2);
     }
 
     h1 {
       font-family: "Playfair Display", serif;
-      color: #2c3e50;
-      font-size: 2.2em;
-      border-bottom: 3px solid #f1c40f;
-      padding-bottom: 10px;
+      color: #1b4f72;
+      font-size: 2.4em;
+      border-bottom: 3px solid #5dade2;
+      display: inline-block;
+      padding-bottom: 8px;
       margin-bottom: 20px;
-      text-align: center;
     }
 
     h2, h3, h4 {
-      color: #e67e22;
+      color: #3498db;
       margin-top: 35px;
       margin-bottom: 10px;
+      font-weight: 600;
     }
 
     a {
-      color: #3498db;
+      color: #2980b9;
       text-decoration: none;
+      font-weight: 500;
     }
     a:hover {
       text-decoration: underline;
+      color: #5dade2;
     }
 
     hr {
       border: none;
-      border-top: 1px dashed #ddd;
-      margin: 30px 0;
+      border-top: 1px dashed #bcd4f6;
+      margin: 35px 0;
     }
 
-    /* --- Lists & Tables --- */
     ul {
-      list-style: "🌿 ";
-      padding-left: 25px;
+      list-style: none;
+      padding-left: 0;
+      margin: 0 auto;
+      display: inline-block;
+      text-align: left;
+    }
+
+    ul li {
+      margin: 8px 0;
+    }
+
+    /* --- Different emoji styles --- */
+    .born-list li::before {
+      content: "🌎 ";
+    }
+    .like-list li::before {
+      content: "💙 ";
+    }
+    .journey-list li::before {
+      content: "🪶 ";
     }
 
     table {
-      width: 100%;
+      width: 90%;
       border-collapse: collapse;
-      margin-top: 15px;
-    }
-    th, td {
-      border: 1px solid #eee;
-      padding: 10px;
-    }
-    th {
-      background-color: #f9f9f9;
-      color: #2c3e50;
+      margin: 0 auto;
+      margin-top: 20px;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
-    /* --- Image Styling --- */
+    th, td {
+      border: 1px solid #e1ebfa;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #eaf4fe;
+      color: #2b3a55;
+    }
+
     .photo {
       width: 100%;
       max-width: 500px;
       border-radius: 16px;
-      margin: 15px 0;
+      margin: 15px auto;
       object-fit: cover;
-      aspect-ratio: 1 / 1; /* this automatically crops images! */
+      aspect-ratio: 4 / 3;
       display: block;
+      box-shadow: 0 4px 10px rgba(0, 102, 204, 0.15);
     }
 
-    /* --- Current position card --- */
+    .photo.original {
+      object-fit: contain;
+      aspect-ratio: auto;
+      max-width: 100%;
+      height: auto;
+      box-shadow: none;
+    }
+
     .current-position {
-      background: #fef9f2;
-      border-left: 5px solid #f1c40f;
+      background: #f0f8ff;
+      border-left: 5px solid #5dade2;
       padding: 20px;
       border-radius: 10px;
-      margin-bottom: 20px;
+      display: inline-block;
+      text-align: center;
     }
-    .current-position p {
-      margin: 6px 0;
+
+    .current-position h2 {
+      color: #2e86de;
     }
 
     iframe {
       border-radius: 12px;
       margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(52, 152, 219, 0.15);
     }
 
   </style>
@@ -124,8 +163,8 @@
 
     <hr>
 
-    <h3>Born and Raised</h3>
-    <ul>
+    <h3>Where it all began:</h3>
+    <ul class="born-list">
       <li>Born in Noventa Vicentina (Italy)</li>
       <li>Raised between Noventa and Durrës (Albania)</li>
     </ul>
@@ -133,19 +172,23 @@
     <hr>
 
     <h3>What I Like</h3>
-    <ul>
+    <ul class="like-list">
       <li>Food!!</li>
       <img src="images/pizza.jpeg" alt="Pizza" class="photo">
       <li>Reading (mostly epic fantasy — last book read: <em>Mistborn: The Hero of Ages</em>)</li>
       <img src="images/readingmistborn.jpeg" alt="Reading Mistborn" class="photo">
       <li>Listening to music (currently looping: <em>God does like ugly</em> by JID)</li>
+      <li>Bonus: Playing pvp games very badly online</li>
     </ul>
 
     <hr>
 
     <h3>Academic Journey</h3>
-    <li>Best part so far: my exchange semester!!</li>
-    <img src="images/Alicante.png" alt="Alicante" class="photo">
+    <ul class="journey-list">
+      <li>Best part so far: my exchange semester!!</li>
+    </ul>
+    <img src="images/Alicante.png" alt="Alicante" class="photo original">
+
     <h4>🎓 Stops Along the Way</h4>
     <table>
       <thead>
