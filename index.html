@@ -1,137 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurora's Story</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
-        h3 {
-            color: #3498db;
-            margin-top: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        h4 {
-            color: #e74c3c;
-            margin-bottom: 15px;
-        }
-        ul {
-            list-style: disc;
-            padding-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-        .current-position p {
-            margin: 5px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora's Story</title>
+  <style>
+    
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 850px;
+      background: white;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      color: #2c3e50;
+      font-size: 2.2em;
+      border-bottom: 3px solid #f1c40f;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    h2, h3, h4 {
+      color: #e67e22;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed #ddd;
+      margin: 30px 0;
+    }
+
+    /* --- Lists & Tables --- */
+    ul {
+      list-style: "🌿 ";
+      padding-left: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #eee;
+      padding: 10px;
+    }
+    th {
+      background-color: #f9f9f9;
+      color: #2c3e50;
+    }
+
+    /* --- Image Styling --- */
+    .photo {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      margin: 15px 0;
+      object-fit: cover;
+      aspect-ratio: 1 / 1; /* this automatically crops images! */
+      display: block;
+    }
+
+    /* --- Current position card --- */
+    .current-position {
+      background: #fef9f2;
+      border-left: 5px solid #f1c40f;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .current-position p {
+      margin: 6px 0;
+    }
+
+    iframe {
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+  </style>
 </head>
 <body>
-
+  <div class="container">
     <h1>Aurora's Story</h1>
 
     <div class="current-position">
-        <h2>Current Position</h2>
-        <p><strong>Berlin, Germany</strong></p>
-        <p><strong>Master Student</strong> in Business Intelligence & Process Management</p>
-        <p>Berlin School of Economics and Law</p>
-        <p><strong>Working Student</strong> in Payroll & Controlling</p>
-        <p>Iberdrola Deutschland GmbH</p>
-        <p>
-            <a href="https://www.linkedin.com/in/auroraruci/" target="_blank">LinkedIn Profile</a> |
-            <a href="https://aouirora.github.io/" target="_blank">GitHub</a>
-        </p>
+      <h2>Current Position</h2>
+      <p><strong>Berlin, Germany</strong></p>
+      <p><strong>Master Student</strong> in Business Intelligence & Process Management</p>
+      <p>Berlin School of Economics and Law</p>
+      <p><strong>Working Student</strong> in Payroll & Controlling</p>
+      <p>Iberdrola Deutschland GmbH</p>
+      <p>
+        <a href="https://www.linkedin.com/in/auroraruci/" target="_blank">LinkedIn</a> |
+        <a href="https://aouirora.github.io/" target="_blank">GitHub</a>
+      </p>
     </div>
 
     <hr>
 
     <h3>Born and Raised</h3>
     <ul>
-        <li>Born in Noventa Vicentina (Italy)</li>
-        <li>Raised between Noventa and Durrës (Albania)</li>
+      <li>Born in Noventa Vicentina (Italy)</li>
+      <li>Raised between Noventa and Durrës (Albania)</li>
     </ul>
 
     <hr>
 
-    <h3>What I like</h3>
+    <h3>What I Like</h3>
     <ul>
-        <li>Food!!</li>
-        <img src="images/pizza.jpeg" alt="Me and some pizza" style="width: 100%; max-width: 500px; border-radius: 10px; margin-top: 10px; margin-bottom: 10px;">
-        <li>Reading (mostly epic fantasy with good world building, last book read: Mistborn series' third book "The Hero of Ages"!!) </li>
-        <img src="images/readingmistborn.jpeg" alt="2am reading" style="width: 100%; max-width: 500px; border-radius: 10px; margin-top: 10px; margin-bottom: 10px;">
-        <li>Listening to music (Currently on loop for weeks now: God does like ugly - JID) </li>
-        
+      <li>Food!!</li>
+      <img src="images/pizza.jpeg" alt="Pizza" class="photo">
+      <li>Reading (mostly epic fantasy — last book read: <em>Mistborn: The Hero of Ages</em>)</li>
+      <img src="images/readingmistborn.jpeg" alt="Reading Mistborn" class="photo">
+      <li>Listening to music (currently looping: <em>God does like ugly</em> by JID)</li>
     </ul>
 
     <hr>
 
     <h3>Academic Journey</h3>
     <li>Best part so far: my exchange semester!!</li>
-    <img src="images/Alicante.png" alt="alicante" style="width: 100%; max-width: 500px; border-radius: 10px; margin-top: 10px; margin-bottom: 10px;">
+    <img src="images/Alicante.png" alt="Alicante" class="photo">
     <h4>🎓 Stops Along the Way</h4>
     <table>
-        <thead>
-            <tr>
-                <th>When?</th>
-                <th>Where?</th>
-                <th>What did I do?</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2000</td>
-                <td>Noventa Vicentina, Italy</td>
-                <td>Was born, very important accomplishment!</td>
-            </tr>
-            <tr>
-                <td>2008-2014</td>
-                <td>Durrës, Albania</td>
-                <td>Middle School</td>
-            </tr>
-            <tr>
-                <td>2015-2020</td>
-                <td>Noventa Vicentina, Italy</td>
-                <td>High School</td>
-            </tr>
-            <tr>
-                <td>2021-2025</td>
-                <td>Berlin, Germany</td>
-                <td>Bachelor's Intl. Business Management</td>
-            </tr>
-            <tr>
-                <td>Jan - Jun 2024</td>
-                <td>Alicante, Spain</td>
-                <td>Exchange Semester</td>
-            </tr>
-            <tr>
-                <td>2025–Now</td>
-                <td>Berlin, Germany</td>
-                <td>Master's in Business Intelligence & Process Managamenet</td>
+      <thead>
+        <tr><th>When?</th><th>Where?</th><th>What did I do?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2000</td><td>Noventa Vicentina, Italy</td><td>Was born, very important accomplishment!</td></tr>
+        <tr><td>2008–2014</td><td>Durrës, Albania</td><td>Middle School</td></tr>
+        <tr><td>2015–2020</td><td>Noventa Vicentina, Italy</td><td>High School</td></tr>
+        <tr><td>2021–2025</td><td>Berlin, Germany</td><td>Bachelor’s in International Business Management</td></tr>
+        <tr><td>Jan–Jun 2024</td><td>Alicante, Spain</td><td>Exchange Semester</td></tr>
+        <tr><td>2025–Now</td><td>Berlin, Germany</td><td>Master’s in Business Intelligence & Process Management</td></tr>
+      </tbody>
+    </table>
 
-<iframe src="academic_journey_map.html" width="800" height="600" style="border:1px solid #ddd;"></iframe>
+    <iframe src="academic_journey_map.html" width="800" height="600"></iframe>
+  </div>
+</body>
+</html>
